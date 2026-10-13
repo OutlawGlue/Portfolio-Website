@@ -1,0 +1,194 @@
+/* =====================================================================
+   style.css  -  "Rack" theme
+
+   Idea: the whole site is a 19-inch equipment rack.
+     - mounting rails with screw holes run down both edges of the page
+     - every project is a faceplate: LED, label-maker tape, LCD, ports
+     - section titles are label-maker tape
+   ===================================================================== */
+
+/* ---------- COLOURS + STYLING ---------- */
+
+:root {
+  --font: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --bg: #0a0d0e;              /* the cabinet interior */
+  --bg-glow: rgba(46, 230, 200, .08);
+  --plate: #12171a;           /* device faceplates */
+  --plate-hi: rgba(255, 255, 255, .045);
+  --inset: #070a0b;           /* recessed things: LCDs, ports, rails */
+  --line: #242d31;
+  --text: #dbe6e3;
+  --muted: #7f908d;
+
+  --accent: #2ee6c8;          /* the teal/cyan */
+  --accent-ink: #04120f;      /* text that sits ON the accent colour */
+  --ok: #8dff7a;              /* green LED */
+  --warn: #ffb454;            /* amber LED */
+
+  --tape: #e8eee8;            /* label-maker tape */
+  --tape-ink: #0a0d0e;
+  --shadow: rgba(0, 0, 0, .55);
+
+  --gutter: max(24px, calc((100vw - 1072px) / 2));
+}
+
+/* Light theme: a printed network diagram on drafting paper */
+[data-theme="light"] {
+  --bg: #e9ebe2;
+  --bg-glow: rgba(7, 128, 111, .10);
+  --plate: #f7f7f1;
+  --plate-hi: rgba(255, 255, 255, .8);
+  --inset: #dde1d5;
+  --line: #bcc4b7;
+  --text: #15211f;
+  --muted: #566763;
+
+  --accent: #07806f;
+  --accent-ink: #f4fbf8;
+  --ok: #2b9a1c;
+  --warn: #c27400;
+
+  --tape: #15211f;
+  --tape-ink: #e9ebe2;
+  --shadow: rgba(21, 33, 31, .18);
+}
+
+/* ---------- BASICS ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;     /* so the sticky header does not cover section titles */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: radial-gradient(70% 45% at 50% -8%, var(--bg-glow), transparent);
+  background-repeat: no-repeat;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p { margin: 0; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.muted { color: var(--muted); }
+
+/* Rack mounting rails down both edges (wide screens only) */
+body::before,
+body::after {
+  content: "";
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  background-color: var(--inset);
+  background-image: radial-gradient(circle at 50% 50%, var(--bg) 0 3px, var(--line) 3px 4.5px, transparent 4.5px);
+  background-size: 28px 44px;
+  background-position: 0 14px;
+  pointer-events: none;
+}
+body::before { left: 0;  border-right: 1px solid var(--line); }
+body::after  { right: 0; border-left:  1px solid var(--line); }
+
+@media (min-width: 1000px) {
+  :root { --gutter: max(52px, calc((100vw - 1072px) / 2)); }
+  body::before, body::after { display: block; }
+}
+
+/* ---------- 3. LAYOUT SHELL ---------- */
+
+main { position: relative; padding-inline: var(--gutter); }
+
+.section {
+  padding-block: 88px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Label-maker tape: used for section titles and card tags */
+.tape {
+  display: inline-block;
+  padding: 2px 12px 2px 9px;
+  background: var(--tape);
+  color: var(--tape-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1.5;
+  /* notched right edge, like a cut strip of tape */
+  clip-path: polygon(0 0, 100% 0, calc(100% - 5px) 50%, 100% 100%, 0 100%);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  row-gap: 12px;
+  margin-bottom: 36px;
+}
+.section-heading .tape { grid-column: 1 / -1; justify-self: start; }
+
+h2 {
+  font-size: clamp(26px, 4.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -.05em;
+  line-height: 1.05;
+}
+.section-count { color: var(--muted); font-size: 12px; }
+
+/* ---------- HEADER ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 64px;
+  padding-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand { font-weight: 800; font-size: 16px; letter-spacing: -.04em; }
+.prompt, .accent-text, .prompt-user { color: var(--accent); }
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  margin-left: 5px;
+  vertical-align: -2px;
+  background: var(--accent);
+  animation: blink 1.1s steps(2) infinite;
+}
+
+.site-header nav { display: none; gap: 28px; font-size: 12px; color: var(--muted); }
+.site-header nav a:hover { color: var(--accent); }
+
+.theme-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+@media (min-width: 720px) { .site-header nav { display: flex; } }
