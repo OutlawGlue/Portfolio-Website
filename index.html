@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang = "en" data-theme="dark"></html>
+<html lang = "en" data-theme="dark">
 
 <head>
     <meta charset = "utf-8">
@@ -25,7 +25,7 @@
     <header class = "site-header">
         <!-- Logo in the top left -->
         <a class = "brand" href = "#home">
-            <span class = "#prompt">~/</span>matthew<span class = "cursor"></span>
+            <span class = "prompt">~/</span>matt<span class = "cursor"></span>
         </a>
 
         <!-- Quick links to parts of the page -->
@@ -44,7 +44,47 @@
     <main>
         <!-- Hero section -->
         <section id = "home" class = "hero section">
-            
+            <div class = "hero-copy">
+                <h1>Matthew<br><span>Irvine</span></h1>
+
+                <p class = "hero-lede">
+                    I enjoy building and configuring systems,<br>
+                    learning more through <span class="accent-text">practical experience.</span>
+                </p>
+
+                <!-- The clock span starts empty, the script fills it in -->
+                <p class = "location">UK, local time <span id = "uk-clock">--:--</span></p>
+
+                <div class = "hero-actions">
+                    <a class = "button primary" href = "#projects">ls projects</a>
+                    <a class = "button" href = "#achievements">ls achievements</a>
+                </div>
+            </div>
+
+            <!-- Terminal window -->
+            <div class = "terminal-window" aria-hidden = "true">
+                <div class = "window-bar">
+                    <span class = "window-dots"><i></i><i></i><i></i></span>
+                    <span>matt@portfolio</span>
+                </div>
+
+                <div class = "terminal-content">
+                    <p><span class = "prompt-user">matt@portfolio</span>:<span class = "prompt-path">~</span>$ whoami</p>
+                    <p class = "terminal-output">matt</p>
+
+                    <p><span class = "prompt-user">matt@portfolio</span>:<span class = "prompt-path">~</span>$ docker compose up -d</p>
+                    <p class = "terminal-output">[+] up 3/3</p>
+                    <p class = "terminal-output"><span class = "tick">✔</span> Network portfolio_tunnel Created 0.0s</p>
+                    <p class = "terminal-output"><span class = "tick">✔</span> Container portfolio-web Started 0.2s</p>
+                    <p class = "terminal-output"><span class = "tick">✔</span> Container portfolio-tunnel Started</p>
+
+                    <p><span class="prompt-user">matt@portfolio</span>:<span class="prompt-path">~</span>$ <span class="cursor"></span></p>
+                </div>
+            </div>
         </section>
+
+
     </main>
 </body>
+
+</html>
