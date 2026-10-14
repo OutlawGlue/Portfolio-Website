@@ -12,46 +12,45 @@
 :root {
   --font: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
-  --bg: #0a0d0e; /* the cabinet interior */
-  --bg-glow: rgba(46, 230, 200, 0.08);
-  --plate: #12171a; /* device faceplates */
-  --plate-hi: rgba(255, 255, 255, 0.045);
-  --inset: #070a0b; /* recessed things: LCDs, ports, rails */
-  --line: #242d31;
-  --text: #dbe6e3;
-  --muted: #7f908d;
-
-  --accent: #2ee6c8; /* the teal/cyan */
-  --accent-ink: #04120f; /* text that sits ON the accent colour */
-  --ok: #8dff7a; /* green LED */
-  --warn: #ffb454; /* amber LED */
-
-  --tape: #e8eee8; /* label-maker tape */
-  --tape-ink: #0a0d0e;
-  --shadow: rgba(0, 0, 0, 0.55);
+  --bg: #0f0f10;
+  --bg-glow: rgba(255, 106, 43, 0.07);
+  --plate: #181819;
+  --plate-hi: rgba(255, 255, 255, 0.04);
+  --inset: #0a0a0b;
+  --line: #2c2c2f;
+  --text: #e8e6e3;
+  --muted: #8d8a86;
+  --accent: #ff6a2b;
+  --accent-ink: #1a0900;
+  --ok: #7ddc6b;
+  --warn: #ffcc33;
+  --alt-1: #4fc3d9;
+  --alt-2: #c08bff;
+  --tape: #e8e6e3;
+  --tape-ink: #0f0f10;
+  --shadow: rgba(0, 0, 0, 0.6);
 
   --gutter: max(24px, calc((100vw - 1072px) / 2));
 }
 
-/* Light theme: a printed network diagram on drafting paper */
 [data-theme="light"] {
-  --bg: #e9ebe2;
-  --bg-glow: rgba(7, 128, 111, 0.1);
-  --plate: #f7f7f1;
+  --bg: #ecebe7;
+  --bg-glow: rgba(214, 76, 10, 0.08);
+  --plate: #f8f7f4;
   --plate-hi: rgba(255, 255, 255, 0.8);
-  --inset: #dde1d5;
-  --line: #bcc4b7;
-  --text: #15211f;
-  --muted: #566763;
-
-  --accent: #07806f;
-  --accent-ink: #f4fbf8;
-  --ok: #2b9a1c;
-  --warn: #c27400;
-
-  --tape: #15211f;
-  --tape-ink: #e9ebe2;
-  --shadow: rgba(21, 33, 31, 0.18);
+  --inset: #dedcd6;
+  --line: #c4c1b9;
+  --text: #1b1a18;
+  --muted: #5f5c56;
+  --accent: #b3400a;
+  --accent-ink: #fff7f1;
+  --ok: #2c7a1c;
+  --warn: #8f6200;
+  --alt-1: #0a7185;
+  --alt-2: #7a45c4;
+  --tape: #1b1a18;
+  --tape-ink: #ecebe7;
+  --shadow: rgba(27, 26, 24, 0.16);
 }
 
 /* ---------- BASICS ---------- */
@@ -521,7 +520,7 @@ h1 span {
   }
 }
 
-/* ---------- 9. THE FACEPLATE CARD ---------- */
+/* ---------- PROJECT FACEPLATE CARDS ---------- */
 
 .unit {
   --led: var(--accent); /* each tag overrides this colour below */
@@ -551,31 +550,6 @@ h1 span {
 }
 .unit[data-tag="automation"] {
   --led: var(--warn);
-}
-
-/* two mounting screws in the bottom corners */
-.unit::before,
-.unit::after {
-  content: "";
-  position: absolute;
-  bottom: 10px;
-  width: 9px;
-  height: 9px;
-  border: 1px solid var(--muted);
-  border-radius: 50%;
-  background: linear-gradient(
-    45deg,
-    transparent 43%,
-    var(--muted) 43% 57%,
-    transparent 57%
-  );
-  opacity: 0.45;
-}
-.unit::before {
-  left: 9px;
-}
-.unit::after {
-  right: 9px;
 }
 
 .unit-head {
@@ -708,4 +682,316 @@ h1 span {
 .read-link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+/* ---------- ACHIEVEMENTS ---------- */
+
+.log {
+  border-top: 1px solid var(--line);
+}
+.log-row {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.log-year {
+  color: var(--muted);
+  font-size: 12px;
+}
+.log-row h3 {
+  font-size: 14px;
+  font-weight: 700;
+}
+.log-row p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+}
+.status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.status.completed {
+  color: var(--ok);
+}
+.status.completed i {
+  box-shadow: 0 0 8px var(--ok);
+}
+.status.in-progress {
+  color: var(--warn);
+}
+.status.in-progress i {
+  box-shadow: 0 0 8px var(--warn);
+  animation: blink 1.4s steps(2) infinite;
+}
+
+@media (max-width: 560px) {
+  .log-row {
+    grid-template-columns: 1fr auto;
+  }
+  .log-year {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- ARCHITECTURE ---------- */
+
+.architecture {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 24px;
+  background: var(--inset);
+  border: 1px solid var(--line);
+}
+
+.arch-node {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  min-height: 104px;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, var(--plate-hi), transparent 50%), var(--plate);
+  border: 1px solid var(--line);
+}
+.arch-node.accent {
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
+}
+.arch-node.accent strong {
+  color: var(--accent);
+}
+.arch-node strong {
+  font-size: 13px;
+}
+.arch-node small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.arch-node .tape {
+  margin-bottom: 4px;
+  font-size: 10px;
+}
+
+/* the cable: a thick jacket with a plug on each end */
+.cable {
+  position: relative;
+  align-self: flex-start;
+  width: 4px;
+  height: 48px;
+  margin-left: 32px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--accent) 40%, var(--inset));
+}
+.cable::before,
+.cable::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 7px;
+  transform: translateX(-50%);
+  background: var(--muted);
+  border-radius: 1px;
+}
+.cable::before {
+  top: -4px;
+}
+.cable::after {
+  bottom: -4px;
+}
+
+/* packets travelling along the cable */
+.cable i {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  opacity: 0;
+  animation: travel-y 2s linear infinite;
+}
+.cable i:nth-child(2) {
+  animation-delay: 0.65s;
+}
+.cable i:nth-child(3) {
+  animation-delay: 1.3s;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.specs b {
+  color: var(--text);
+  font-weight: 500;
+}
+.specs em {
+  color: var(--ok);
+  font-style: normal;
+}
+
+@media (min-width: 720px) {
+  .architecture {
+    flex-direction: row;
+    align-items: center;
+    padding: 32px;
+  }
+  .arch-node {
+    flex: 1;
+  }
+  .cable {
+    align-self: center;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 4px;
+    margin: 0;
+  }
+  .cable::before,
+  .cable::after {
+    top: 50%;
+    left: auto;
+    width: 7px;
+    height: 12px;
+    transform: translateY(-50%);
+  }
+  .cable::before {
+    left: -4px;
+  }
+  .cable::after {
+    right: -4px;
+    bottom: auto;
+  }
+  .cable i {
+    top: 50%;
+    left: 0;
+    margin: -4px 0 0;
+    animation-name: travel-x;
+  }
+}
+
+/* ---------- CONTACT and FOOTER ---------- */
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+.contact h2 {
+  margin: 12px 0 10px;
+}
+.contact .muted {
+  font-size: 13px;
+}
+
+@media (min-width: 720px) {
+  .contact {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 22px var(--gutter) 30px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.site-footer a {
+  color: var(--accent);
+}
+.site-footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes activity {
+  50% {
+    box-shadow: none;
+  }
+}
+@keyframes travel-y {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@keyframes travel-x {
+  from {
+    left: 0;
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  to {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Respect visitors who ask their device for less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .cable i {
+    opacity: 1;
+  }
 }

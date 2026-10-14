@@ -152,7 +152,64 @@
         </p>
       </section>
 
-      <!-- ACHIEVEMENTS ETC -->
+      <!-- ============ ACHIEVEMENTS ============ -->
+      <section id="achievements" class="section">
+        <div class="section-heading">
+          <p class="tape">achievements</p>
+          <h2>Some of my Achievements</h2>
+        </div>
+        <div id="achievement-list" class="log"></div>
+      </section>
+
+      <!-- ============ ABOUT + ARCHITECTURE ============ -->
+      <section id="about" class="section">
+        <div class="section-heading">
+          <p class="tape">about</p>
+          <h2>Serving this Site</h2>
+        </div>
+
+        <!-- Four devices joined by three "cables".
+           The little <i> elements inside each cable are the animated packets. -->
+        <div class="architecture">
+          <div class="arch-node">
+            <span class="tape">client</span>
+            <strong>visitor</strong>
+            <small>your browser</small>
+          </div>
+          <div class="cable"><i></i><i></i><i></i></div>
+
+          <div class="arch-node accent">
+            <span class="tape">edge</span>
+            <strong>cloudflare</strong>
+            <small>zero trust tunnel</small>
+          </div>
+          <div class="cable"><i></i><i></i><i></i></div>
+
+          <div class="arch-node">
+            <span class="tape">gateway</span>
+            <strong>router</strong>
+            <small>10.0.0.1</small>
+          </div>
+          <div class="cable"><i></i><i></i><i></i></div>
+
+          <div class="arch-node accent">
+            <span class="tape">host</span>
+            <strong>raspberry pi</strong>
+            <small>docker, nginx, cloudflared</small>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- Footer-->
+    <footer class="site-footer">
+      <span
+        >served from a Raspberry Pi.
+        <a href="https://github.com/OutlawGlue" target="_blank" rel="noreferrer"
+          >github</a
+        ></span
+      >
+      <span>&copy; <span id="year">2026</span> Matthew Irvine</span>
+    </footer>
   </body>
 </html>

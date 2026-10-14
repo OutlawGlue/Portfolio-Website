@@ -15,20 +15,66 @@
    "name: value" pairs. Replace all of this example content with your own.
    --------------------------------------------------------------------- */
 
-const EMAIL = "";
-
 const projects = [
   {
     id: "dns-stack", // short unique name, no spaces
     title: "Pi-hole + Unbound DNS stack",
     tag: "homelab",
-    date: "2026-09-14", // year-month-day, so sorting works
+    date: "2026-04-22", // year-month-day, so sorting works
     summary:
-      "A recursive, ad-blocking DNS stack with observability and safe fallbacks.",
+      "A recursive, ad and malicious site blocking DNS stack and fallbacks.",
     tech: ["Docker", "Linux", "DNS"],
-    pinned: true, // starts pinned to the top
+    pinned: false, // starts pinned to the top
     cover: "DNS / 10.0.0.1", // text on the little display
     url: "https://github.com/", // optional: leave this line out if there is no link
+  },
+  {
+    id: "portfolio-website",
+    title: "Portfolio Website v2",
+    tag: "homelab",
+    date: "2026-10-14",
+    summary:
+      "This portfolio website used to display my skills, achievements, and projects.",
+    tech: ["Docker", "Cloudflare", "Web Design"],
+    pinned: true,
+    cover: "SITE UP",
+    url: "https://github.com/OutlawGlue/Portfolio-Website",
+  },
+  {
+    id: "barricade-game",
+    title: "Motorsport Sim",
+    tag: "programming",
+    date: "2025-10-18",
+    summary:
+      "My A-Level coursework Formula 1 style game, programmed in C# and using Windows Forms.",
+    tech: ["C#", "Coursework"],
+    pinned: true,
+    cover: "DICE ROLLED",
+    url: "https://github.com/OutlawGlue/Portfolio-Website",
+  },
+  {
+    id: "alevel-coursework",
+    title: "Motorsport Sim",
+    tag: "programming",
+    date: "2025-10-18",
+    summary:
+      "My A-Level coursework Formula 1 style game, programmed in C# and using Windows Forms.",
+    tech: ["C#", "Coursework"],
+    pinned: true,
+    cover: "DICE ROLLED",
+    url: "https://github.com/OutlawGlue/Portfolio-Website",
+  },
+  {
+    id: "liars-dice",
+    title: "Liars' Dice Game",
+    tag: "programming",
+    date: "2024-10-1",
+    summary:
+      "Console-based game programmed in C#, co-created with @Lukeaustenalexander on GitHub",
+    tech: ["C#", "Console", "Collaboration"],
+    pinned: true,
+    cover: "SIMULATING RACE",
+    url: "https://github.com/OutlawGlue/Motorsport-Sim-Coursework",
   },
 ];
 
@@ -39,9 +85,27 @@ const skills = ["Linux", "Docker", "Networking", "C#", "Python"];
 const achievements = [
   {
     year: "2026",
-    title: "BSc Computer Science, year 1",
+    title: "Began BSc Computer Science",
     issuer: "Ulster University, Belfast",
     status: "in progress",
+  },
+  {
+    year: "2026",
+    title: "1st in Computing Science",
+    issuer: "Down High School, NI",
+    status: "completed",
+  },
+  {
+    year: "2026",
+    title: "A-Levels Completed",
+    issuer: "Down High School, NI",
+    status: "completed",
+  },
+  {
+    year: "2025",
+    title: "Kainos CodeCamp",
+    issuer: "Kainos, Belfast",
+    status: "completed",
   },
 ];
 
@@ -59,7 +123,6 @@ const emptyState = document.querySelector("#empty-state");
 const skillList = document.querySelector("#skill-list");
 const achievementList = document.querySelector("#achievement-list");
 const themeButton = document.querySelector("#theme-toggle");
-const copyButton = document.querySelector("#copy-email");
 const clock = document.querySelector("#uk-clock");
 const yearLabel = document.querySelector("#year");
 
@@ -192,11 +255,12 @@ function renderFilters() {
    --------------------------------------------------------------------- */
 
 function renderSkills() {
-  // "ii" is how Debian's package list marks something as installed
+  if (!skillList) return; // no #skill-list available
   skillList.innerHTML = skills.map((s) => `<li><b>ii</b> ${s}</li>`).join("");
 }
 
 function renderAchievements() {
+  if (!achievementList) return; // no #achievement-list available
   achievementList.innerHTML = achievements
     .map(function (a) {
       const statusClass = a.status.replace(" ", "-"); // "in progress" -> "in-progress"
@@ -285,20 +349,6 @@ applyTheme(savedTheme);
 /* ---------------------------------------------------------------------
    SECTION 10: SMALL EXTRAS
    --------------------------------------------------------------------- */
-
-// Copy email. If the browser refuses (it needs https or localhost),
-// we just show the address instead so nobody is stuck.
-copyButton.addEventListener("click", async function () {
-  try {
-    await navigator.clipboard.writeText(EMAIL);
-    copyButton.textContent = "copied";
-  } catch (error) {
-    copyButton.textContent = EMAIL;
-  }
-  setTimeout(function () {
-    copyButton.textContent = "copy email";
-  }, 1800);
-});
 
 // Live UK time (Europe/London handles GMT/BST switching for us)
 function updateClock() {
