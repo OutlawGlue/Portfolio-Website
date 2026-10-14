@@ -1,90 +1,158 @@
-<!DOCTYPE html>
-<html lang = "en" data-theme="dark">
-
-<head>
-    <meta charset = "utf-8">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Title displayed on tab -->
     <title>Matthew Irvine - Portfolio</title>
 
     <!-- Fonts used on the site -->
-    <link rel = "preconnect" href = "https://fonts.googleapis.com">
-    <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
-    <link href = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel = "stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Javascript and CSS -->
-    <link rel = "stylesheet" href = "style.css">
-    <script src = "script.js" defer></script>
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-
-
-<body>
+  <body>
     <!-- Header (top bar) -->
-    <header class = "site-header">
-        <!-- Logo in the top left -->
-        <a class = "brand" href = "#home">
-            <span class = "prompt">~/</span>matt<span class = "cursor"></span>
-        </a>
+    <header class="site-header">
+      <!-- Logo in the top left -->
+      <a class="brand" href="#home">
+        <span class="prompt">~/</span>matt<span class="cursor"></span>
+      </a>
 
-        <!-- Quick links to parts of the page -->
-        <nav aria-label= "Main">
-            <a href = "#projects">projects</a>
-            <a href = "#achievements">achievements</a>
-            <a href = "#stack">stack</a>
-            <a href = "#contact">contact</a>
-        </nav>
+      <!-- Quick links to parts of the page -->
+      <nav aria-label="Main">
+        <a href="#projects">projects</a>
+        <a href="#achievements">achievements</a>
+        <a href="#stack">stack</a>
+        <a href="#contact">contact</a>
+      </nav>
 
-        <!-- Dark/Light mode toggle -->
-        <button id = "theme-toggle" class = "theme-btn" type = "button" aria-label = "Switch between dark and light theme">theme: dark</button>
+      <!-- Dark/Light mode toggle -->
+      <button
+        id="theme-toggle"
+        class="theme-btn"
+        type="button"
+        aria-label="Switch between dark and light theme"
+      >
+        theme: dark
+      </button>
     </header>
 
     <!-- Main content -->
     <main>
-        <!-- Hero section -->
-        <section id = "home" class = "hero section">
-            <div class = "hero-copy">
-                <h1>Matthew<br><span>Irvine</span></h1>
+      <!-- Hero section -->
+      <section id="home" class="hero section">
+        <div class="hero-copy">
+          <h1>Matthew<br /><span>Irvine</span></h1>
 
-                <p class = "hero-lede">
-                    I enjoy building and configuring systems,<br>
-                    learning more through <span class="accent-text">practical experience.</span>
-                </p>
+          <p class="hero-lede">
+            I enjoy building and configuring systems,<br />
+            learning more through
+            <span class="accent-text">practical experience.</span>
+          </p>
 
-                <!-- The clock span starts empty, the script fills it in -->
-                <p class = "location">UK, local time <span id = "uk-clock">--:--</span></p>
+          <!-- The clock span starts empty, the script fills it in -->
+          <p class="location">
+            UK, local time <span id="uk-clock">--:--</span>
+          </p>
 
-                <div class = "hero-actions">
-                    <a class = "button primary" href = "#projects">ls projects</a>
-                    <a class = "button" href = "#achievements">ls achievements</a>
-                </div>
-            </div>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">ls projects</a>
+            <a class="button" href="#achievements">ls achievements</a>
+          </div>
+        </div>
 
-            <!-- Terminal window -->
-            <div class = "terminal-window" aria-hidden = "true">
-                <div class = "window-bar">
-                    <span class = "window-dots"><i></i><i></i><i></i></span>
-                    <span>matt@portfolio</span>
-                </div>
+        <!-- Terminal window -->
+        <div class="terminal-window" aria-hidden="true">
+          <div class="window-bar">
+            <span class="window-dots"><i></i><i></i><i></i></span>
+            <span>matt@portfolio</span>
+          </div>
 
-                <div class = "terminal-content">
-                    <p><span class = "prompt-user">matt@portfolio</span>:<span class = "prompt-path">~</span>$ whoami</p>
-                    <p class = "terminal-output">matt</p>
+          <div class="terminal-content">
+            <p>
+              <span class="prompt-user">matt@portfolio</span>:<span
+                class="prompt-path"
+                >~</span
+              >$ whoami
+            </p>
+            <p class="terminal-output">matt</p>
 
-                    <p><span class = "prompt-user">matt@portfolio</span>:<span class = "prompt-path">~</span>$ docker compose up -d</p>
-                    <p class = "terminal-output">[+] up 3/3</p>
-                    <p class = "terminal-output"><span class = "tick">✔</span> Network portfolio_tunnel Created 0.0s</p>
-                    <p class = "terminal-output"><span class = "tick">✔</span> Container portfolio-web Started 0.2s</p>
-                    <p class = "terminal-output"><span class = "tick">✔</span> Container portfolio-tunnel Started</p>
+            <p>
+              <span class="prompt-user">matt@portfolio</span>:<span
+                class="prompt-path"
+                >~</span
+              >$ docker compose up -d
+            </p>
+            <p class="terminal-output">[+] up 3/3</p>
+            <p class="terminal-output">
+              <span class="tick">✔</span> Network portfolio_tunnel Created 0.0s
+            </p>
+            <p class="terminal-output">
+              <span class="tick">✔</span> Container portfolio-web Started 0.2s
+            </p>
+            <p class="terminal-output">
+              <span class="tick">✔</span> Container portfolio-tunnel Started
+            </p>
 
-                    <p><span class="prompt-user">matt@portfolio</span>:<span class="prompt-path">~</span>$ <span class="cursor"></span></p>
-                </div>
-            </div>
-        </section>
+            <p>
+              <span class="prompt-user">matt@portfolio</span>:<span
+                class="prompt-path"
+                >~</span
+              >$ <span class="cursor"></span>
+            </p>
+          </div>
+        </div>
+      </section>
 
+      <!-- Projects -->
+      <section>
+        <!-- Heading for this section -->
+        <div class="section-heading">
+          <p class="tape">projects</p>
+          <h2>Some of my Projects</h2>
 
+          <span id="project-count" class="section-count"></span>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="projects-toolbar">
+          <!-- Search bar -->
+          <label class="search-box">
+            <span class="search-prefix">grep -i</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="search projects"
+              autocomplete="off"
+              aria-label="Search projects"
+            />
+            <kbd>/</kbd>
+          </label>
+
+          <!-- Filter buttons -->
+          <div id="filters" class="filter-row"></div>
+        </div>
+
+        <!-- Project grid (generated from script.js) -->
+        <div id="project-grid" class="project-grid"></div>
+
+        <!-- Error if no results -->
+        <p id="empty-state" class="empty-state" hidden>
+          (nothing matched your search)
+        </p>
+      </section>
+
+      <!-- ACHIEVEMENTS ETC -->
     </main>
-</body>
-
+  </body>
 </html>
