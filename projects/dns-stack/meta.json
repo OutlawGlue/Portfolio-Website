@@ -1,0 +1,14 @@
+{
+  "id": "dns-stack",
+  "title": "Pi-hole + Unbound DNS stack",
+  "tag": "homelab",
+  "date": "2026-04-22",
+  "summary": "A recursive, ad and malicious site blocking DNS stack and fallbacks.",
+  "tech": [
+    "Docker",
+    "Linux",
+    "DNS"
+  ],
+  "pinned": false,
+  "cover": "DNS / 10.0.0.1"
+}

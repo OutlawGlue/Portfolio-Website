@@ -1,0 +1,15 @@
+{
+  "id": "portfolio-website",
+  "title": "Portfolio Website v2",
+  "tag": "homelab",
+  "date": "2026-10-14",
+  "summary": "This portfolio website used to display my skills, achievements, and projects.",
+  "tech": [
+    "Docker",
+    "Cloudflare",
+    "Web Design"
+  ],
+  "pinned": true,
+  "cover": "SITE UP",
+  "repo": "https://github.com/OutlawGlue/Portfolio-Website"
+}

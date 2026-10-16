@@ -1,0 +1,15 @@
+{
+  "id": "liars-dice",
+  "title": "Liars' Dice Game",
+  "tag": "programming",
+  "date": "2024-10-1",
+  "summary": "Console-based game programmed in C#, co-created with @Lukeaustenalexander on GitHub.",
+  "tech": [
+    "C#",
+    "Console",
+    "Collaboration"
+  ],
+  "pinned": true,
+  "cover": "DICE ROLLED",
+  "repo": "https://github.com/OutlawGlue/Liars-Dice"
+}

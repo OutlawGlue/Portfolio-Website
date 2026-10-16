@@ -17,16 +17,16 @@
 
 const projects = [
   {
-    id: "dns-stack", // short unique name, no spaces
-    title: "Pi-hole + Unbound DNS stack",
-    tag: "homelab",
-    date: "2026-04-22", // year-month-day, so sorting works
+    id: "barricade-game",
+    title: "Barricade Game",
+    tag: "programming",
+    date: "2026-3-18",
     summary:
-      "A recursive, ad and malicious site blocking DNS stack and fallbacks.",
-    tech: ["Docker", "Linux", "DNS"],
-    pinned: false, // starts pinned to the top
-    cover: "DNS / 10.0.0.1", // text on the little display
-    url: "https://github.com/", // optional: leave this line out if there is no link
+      "A console-based game on barricade.gg, using my own A* algorithm implementation.",
+    tech: ["C#", "Console"],
+    pinned: true,
+    cover: "GAME RUNNING",
+    repo: "https://github.com/OutlawGlue/Portfolio-Website",
   },
   {
     id: "portfolio-website",
@@ -36,21 +36,20 @@ const projects = [
     summary:
       "This portfolio website used to display my skills, achievements, and projects.",
     tech: ["Docker", "Cloudflare", "Web Design"],
-    pinned: true,
+    pinned: false,
     cover: "SITE UP",
-    url: "https://github.com/OutlawGlue/Portfolio-Website",
+    repo: "https://github.com/OutlawGlue/Portfolio-Website",
   },
   {
-    id: "barricade-game",
-    title: "Motorsport Sim",
-    tag: "programming",
-    date: "2025-10-18",
+    id: "dns-stack",
+    title: "Pi-hole + Unbound DNS stack",
+    tag: "homelab",
+    date: "2026-04-22",
     summary:
-      "My A-Level coursework Formula 1 style game, programmed in C# and using Windows Forms.",
-    tech: ["C#", "Coursework"],
-    pinned: true,
-    cover: "DICE ROLLED",
-    url: "https://github.com/OutlawGlue/Portfolio-Website",
+      "A recursive, ad and malicious site blocking DNS stack and fallbacks.",
+    tech: ["Docker", "Linux", "DNS"],
+    pinned: false,
+    cover: "DNS / 10.0.0.1",
   },
   {
     id: "alevel-coursework",
@@ -61,8 +60,8 @@ const projects = [
       "My A-Level coursework Formula 1 style game, programmed in C# and using Windows Forms.",
     tech: ["C#", "Coursework"],
     pinned: true,
-    cover: "DICE ROLLED",
-    url: "https://github.com/OutlawGlue/Portfolio-Website",
+    cover: "SIMULATING RACE",
+    repo: "https://github.com/OutlawGlue/Motorsport-Sim-Coursework",
   },
   {
     id: "liars-dice",
@@ -70,11 +69,11 @@ const projects = [
     tag: "programming",
     date: "2024-10-1",
     summary:
-      "Console-based game programmed in C#, co-created with @Lukeaustenalexander on GitHub",
+      "Console-based game programmed in C#, co-created with @Lukeaustenalexander on GitHub.",
     tech: ["C#", "Console", "Collaboration"],
     pinned: true,
-    cover: "SIMULATING RACE",
-    url: "https://github.com/OutlawGlue/Motorsport-Sim-Coursework",
+    cover: "DICE ROLLED",
+    repo: "https://github.com/OutlawGlue/Liars-Dice",
   },
 ];
 

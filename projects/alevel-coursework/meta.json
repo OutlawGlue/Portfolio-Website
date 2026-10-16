@@ -1,0 +1,14 @@
+{
+  "id": "alevel-coursework",
+  "title": "Motorsport Sim",
+  "tag": "programming",
+  "date": "2025-10-18",
+  "summary": "My A-Level coursework Formula 1 style game, programmed in C# and using Windows Forms.",
+  "tech": [
+    "C#",
+    "Coursework"
+  ],
+  "pinned": true,
+  "cover": "SIMULATING RACE",
+  "repo": "https://github.com/OutlawGlue/Motorsport-Sim-Coursework"
+}
